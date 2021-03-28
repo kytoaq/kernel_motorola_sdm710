@@ -206,7 +206,7 @@ static int gdsc_enable(struct regulator_dev *rdev)
 	int i, ret = 0;
 
 	if (sc->skip_disable_before_enable)
-		return ret;
+		return 0;
 
 	if (sc->parent_regulator) {
 		ret = regulator_set_voltage(sc->parent_regulator,

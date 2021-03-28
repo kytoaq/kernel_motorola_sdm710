@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2016-2020, The Linux Foundation. All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -206,6 +206,15 @@ struct panel_param {
 	const u16 default_value;
 	u16 value;
 	bool is_supported;
+/* Extended Panel config for panels with additional gpios */
+struct dsi_panel_exd_config {
+	int display_1p8_en;
+	int led_5v_en;
+	int switch_power;
+	int led_en1;
+	int led_en2;
+	int oenab;
+	int selab;
 };
 
 struct dsi_panel {
@@ -268,6 +277,7 @@ struct dsi_panel {
 	int panel_recovery_retry;
 
 	struct panel_param *param_cmds;
+	struct dsi_panel_exd_config exd_config;
 };
 
 bool dsi_display_all_displays_dead(void);
